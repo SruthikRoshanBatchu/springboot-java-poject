@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/SruthikRoshanBatchu/springboot-java-poject.git'
+                git branch: 'main', url: 'https://github.com/SruthikRoshanBatchu/springboot-java-poject.git'
             }
         }
         
@@ -22,6 +22,12 @@ pipeline {
         stage('Package') {
             steps {
                 sh "mvn clean package"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh "mvn test"
             }
         }
 
